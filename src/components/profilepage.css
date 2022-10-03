@@ -1,0 +1,60 @@
+.userdetails {
+  /* border: 2px solid white; */
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: fit-content;
+}
+
+.avatar>img {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  box-shadow: 0px 1px 3px #0000000d inset, 0px 0px 15px #072136;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  align-content: flex-start;
+  justify-content: flex-start;
+  width: 50%;
+  width: fit-content;
+  height: 120px;
+  height: fit-content;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid;
+}
+
+.details:hover {
+  box-shadow: 0px 1px 3px #0000000d inset, 0px 0px 15px #3682bd;
+}
+
+.name>button {
+  color: black;
+  border-radius: 5px;
+  height: 35px;
+  border: none;
+  width: 75px;
+  font-weight:bold;
+
+}
+
+.name>button:hover {
+  box-shadow: 0px 1px 3px #0000000d inset, 0px 0px 15px #3682bd;
+  transform: scale(1.1);
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+  font-weight:900;
+}
+
+.repositoriesmain {
+  height: 65vh;
+  border: 2px solid;
+}
