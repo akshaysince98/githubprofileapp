@@ -6,7 +6,6 @@ import './repo.css'
 function Repo(props) {
 
   const [loading, setLoading] = useState(props.loading)
-
   const [langarr, setLangarr] = useState([])
 
   useEffect(() => {
@@ -15,17 +14,12 @@ function Repo(props) {
 
         setLoading(true)
         let langs = await axios.get(props.data.languages_url)
-        // let langs = {
-        //   "JavaScript": 8977,
-        //   "CSS": 3409,
-        //   "HTML": 694
-        // }
+
         langs = langs.data
         let i = 0
-        let nlangarr =[]
+        let nlangarr = []
         for (let key in langs) {
           nlangarr[i] = key
-          // console.log(key)
           i++
         }
         setLangarr(nlangarr)
@@ -52,7 +46,6 @@ function Repo(props) {
                   return <span key={i} className="language">{l}</span>
                 })}
               </div>
-
             </a>
       }
     </>

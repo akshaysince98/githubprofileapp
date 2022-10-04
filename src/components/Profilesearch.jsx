@@ -20,14 +20,11 @@ function Profilesearch(props) {
   let datasetting = props.datasetting
   useEffect(() => {
     (async () => {
-      // console.log("blah")
       if (user) {
         setLoading(true)
         try {
           let res = await axios.get('https://api.github.com/users/' + user)
-          // console.log(res.data)
           datasetting(res.data)
-
         } catch (err) {
           console.log(err.message)
           setError('Enter a valid username')

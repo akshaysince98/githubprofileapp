@@ -4,7 +4,6 @@ import Repositories from './Repositories'
 
 function Profilepage(props) {
 
-// console.log(props.data);
   return (
     <>
       <div className="userdetails">
