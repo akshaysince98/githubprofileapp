@@ -39,16 +39,28 @@ function App() {
     "updated_at": "2022-09-13T14:49:57Z"
   }
 
-  const [username, setUsername] = useState('akshaysince98')
+  const [username, setUsername] = useState('')
 
-  // TODO: need to delete this x
-  const [data, setData] = useState({x})
+  const [data, setData] = useState({})
 
   const datasetting = (pd) => {
-    setUsername(pd.name)
-    setData()
+    setUsername(pd.login)
+    let x = {
+      login: pd.login,
+      bio: pd.bio,
+      twitter_username: pd.twitter_username,
+      html_url: pd.html_url,
+      avatar_url: pd.avatar_url,
+      repos_url: pd.repos_url,
+      public_repos: pd.public_repos
+    }
+    
+    setData(x)
   }
 
+  const resetuser = () => {
+    setUsername('')
+  }
 
   return (
     <>
@@ -56,8 +68,8 @@ function App() {
 
         {
           username ?
-            <Profilepage data={data.x} /> :
-            <Profilesearch />
+            <Profilepage data={data} resetuser={resetuser} /> :
+            <Profilesearch datasetting={datasetting} />
         }
       </div>
     </>

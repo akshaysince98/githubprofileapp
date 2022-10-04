@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react'
 import './profilesearch.css'
 import axios from 'axios'
 
-function Profilesearch() {
+function Profilesearch(props) {
 
   const [input, setInput] = useState('')
   const [user, setUser] = useState('')
   const [error, setError] = useState('')
-  const [data, setData] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const searching = async () => {
     if (input) {
@@ -17,15 +17,16 @@ function Profilesearch() {
       setError('Enter a valid username')
     }
   }
-
+  let datasetting = props.datasetting
   useEffect(() => {
     (async () => {
+      // console.log("blah")
       if (user) {
-
+        setLoading(true)
         try {
           let res = await axios.get('https://api.github.com/users/' + user)
-          setData(res)
-          console.log(res.data)
+          // console.log(res.data)
+          datasetting(res.data)
 
         } catch (err) {
           console.log(err.message)
@@ -34,9 +35,10 @@ function Profilesearch() {
             setError('')
           }, 3000);
         }
+        setLoading(false)
       }
     })()
-  }, [user])
+  }, [user, datasetting])
 
   return (
 
@@ -51,18 +53,22 @@ function Profilesearch() {
               <button onClick={searching} >Search</button>
             </div>
           </div>
-        </div>
-        :
-        <div className='searchbox'>
-          <div className="box">
-
-            Enter GitHub Username :
-            <div className='inputandbutton'>
-              <input type="text" onChange={(e) => setInput(e.target.value)} />
-              <button onClick={searching} >Search</button>
-            </div>
+        </div> :
+        loading ? <div className='searchbox'>
+          <div className="loadingtext">
+            Loading...
           </div>
-        </div>}
+        </div> :
+          <div className='searchbox'>
+            <div className="box">
+
+              Enter GitHub Username :
+              <div className='inputandbutton'>
+                <input type="text" onChange={(e) => setInput(e.target.value)} />
+                <button onClick={searching} >Search</button>
+              </div>
+            </div>
+          </div>}
 
     </>
   )

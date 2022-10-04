@@ -4,17 +4,17 @@ import Repositories from './Repositories'
 
 function Profilepage(props) {
 
-  // console.log(props.data)
+console.log(props.data);
   return (
     <>
       <div className="userdetails">
         <span className="avatar">
 
-          {/* TODO: must change this image source to url given in data */}
-          <img src="https://via.placeholder.com/150C/O https://placeholder.com/" alt="" />
+          
+          <img src={props.data.avatar_url} alt="" />
         </span>
         <span className="details">
-          <div className='name' ><div>{props.data.name}</div> <button>Go back?</button></div>
+          <div className='name' ><div>{props.data.login}</div> <button onClick={props.resetuser} >Go back?</button></div>
           {props.data.bio ? <div>{props.data.bio}</div> : null}
           {props.data.location ? <div>{props.data.location}</div> : null}
           {props.data.twitter_username ? <div>Twitter: <a href={props.data.twitter_username}> {props.data.twitter_username}</a></div> : null}
@@ -24,6 +24,9 @@ function Profilepage(props) {
       <div className='repositoriesmain'>
         <Repositories allrepos={props.data.repos_url} num={props.data.public_repos} />
       </div>
+      {
+            console.log("in profilepage ")
+          }
 
     </>
   )

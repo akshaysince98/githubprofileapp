@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Repo from './Repo'
 import './repositories.css'
 
 function Repositories(props) {
@@ -32,7 +33,7 @@ function Repositories(props) {
         "site_admin": false
       },
       "html_url": "https://github.com/akshaysince98/btwobfrontend",
-      "description": null,
+      "description": "nullnullnullnu llnullnullnullnu  llnullnul lnullnullnullnull null nullnull nullnullnullnullnull",
       "fork": false,
       "url": "https://api.github.com/repos/akshaysince98/btwobfrontend",
       "forks_url": "https://api.github.com/repos/akshaysince98/btwobfrontend/forks",
@@ -1396,52 +1397,57 @@ function Repositories(props) {
   const [pagen, setPagen] = useState(1)
 
   // TODO: need to replace this x with empty array
-  const [array, setArray] = useState(x)
+  const [reparray, setArray] = useState([])
+  const [loading, setLoading] = useState(false)
 
-
-  const paginationno = () => {
-    let num = props.num
-    let pages = 1
-    let parr = []
-    parr.push(<div className="page"> {pages}
-    </div>)
-    while (num >= 10) {
-      pages++
-      num -= 10
-      parr.push(<div className="page"> {pages}
-      </div>)
-    }
-
-    return parr
+  let num = props.num
+  let i = 1
+  let parr = [1]
+  while (num > 10) {
+    num -= 10
+    i++
+    parr.push(i)
   }
+
+
 
   useEffect(() => {
 
-    // (async () => {
-    //   let alldata = await axios.get(props.allrepos)
-    //   let first = (pagen - 1) * 10
+    (async () => {
+      setLoading(true)
+      let alldata = await axios.get(props.allrepos)
+      alldata= alldata.data
+      // let alldata = x
+      let first = (pagen - 1) * 10
 
-    //   let narr = []
-    //   for (let i = 0; i < 10; i++) {
-    //     narr[i] = alldata[first]
-    //     first++
-    //   }
+      let narr = []
+      for (let i = 0; i < 10; i++) {
+        narr[i] = alldata[first]
+        first++
+      }
+      console.log(narr)
+      setArray(narr)
+      setLoading(false)
+    })()
 
-    //   setArray[narr]
-    // })()
 
-
-  }, [pagen])
+  }, [pagen, props.allrepos])
 
 
   return (
     <>
+
+
+
       <div className="reps">
+        {reparray.map((r, i) => <Repo key={i} data={r} loading={loading} />)}
+      </div>
+      <div className='pagination'>
+        {parr.map((p, i) =>
+          <div key={i} className="page" onClick={() => setPagen(p)}>{p}</div>
+        )}
       </div>
 
-      <div className='pagination'>
-        {paginationno()}
-      </div>
     </>
   )
 }

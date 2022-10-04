@@ -1,0 +1,33 @@
+.repo {
+  /* background-color: darkgray; */
+  border: 2px solid;
+  border-radius: 5px;
+  width: 340px;
+  height: fit-content;
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.reponame{
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.repo:hover{
+  box-shadow: 0px 1px 3px #0000000d inset, 0px 0px 15px #3682bd;
+transform: scale(1.02);
+}
+
+.langmain{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.language {
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 2px;
+  background-color: rgb(8, 85, 118);
+}

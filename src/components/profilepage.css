@@ -56,5 +56,7 @@
 
 .repositoriesmain {
   height: 65vh;
-  border: 2px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
