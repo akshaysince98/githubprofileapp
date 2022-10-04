@@ -1396,7 +1396,6 @@ function Repositories(props) {
 
   const [pagen, setPagen] = useState(1)
 
-  // TODO: need to replace this x with empty array
   const [reparray, setArray] = useState([])
   const [loading, setLoading] = useState(false)
 
