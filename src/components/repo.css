@@ -23,6 +23,8 @@ transform: scale(1.02);
 .langmain{
   margin-top: 10px;
   margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .language {

@@ -4,7 +4,7 @@ import Repositories from './Repositories'
 
 function Profilepage(props) {
 
-console.log(props.data);
+// console.log(props.data);
   return (
     <>
       <div className="userdetails">
@@ -24,9 +24,6 @@ console.log(props.data);
       <div className='repositoriesmain'>
         <Repositories allrepos={props.data.repos_url} num={props.data.public_repos} />
       </div>
-      {
-            console.log("in profilepage ")
-          }
 
     </>
   )

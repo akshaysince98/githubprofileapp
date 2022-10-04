@@ -7,7 +7,7 @@ function Repo(props) {
 
   const [loading, setLoading] = useState(props.loading)
 
-  let langarr = ["JavaScript", "CSS", "HTML"]
+  const [langarr, setLangarr] = useState([])
 
   useEffect(() => {
     (async () => {
@@ -20,12 +20,15 @@ function Repo(props) {
         //   "CSS": 3409,
         //   "HTML": 694
         // }
+        langs = langs.data
         let i = 0
+        let nlangarr =[]
         for (let key in langs) {
-          langarr[i] = key
+          nlangarr[i] = key
           // console.log(key)
           i++
         }
+        setLangarr(nlangarr)
         setLoading(false)
       }
     })()
