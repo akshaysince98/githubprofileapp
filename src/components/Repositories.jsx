@@ -11,6 +11,10 @@ function Repositories(props) {
   const [loading, setLoading] = useState(false)
 
   let num = props.num
+  if (num > 30) {
+    num = 30
+  }
+
   let i = 1
   let parr = [1]
   while (num > 10) {
@@ -26,7 +30,8 @@ function Repositories(props) {
     (async () => {
       setLoading(true)
       let alldata = await axios.get(props.allrepos)
-      alldata= alldata.data
+      console.log(alldata)
+      alldata = alldata.data
       let first = (pagen - 1) * 10
 
       let narr = []
@@ -34,7 +39,7 @@ function Repositories(props) {
         narr[i] = alldata[first]
         first++
       }
-      console.log(narr)
+      // console.log(narr)
       setArray(narr)
       setLoading(false)
     })()
